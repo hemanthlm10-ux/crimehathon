@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 .venv/
 ~$*
+
+# Hackathon handout materials (kept locally, not part of the project)
+CRIMEATHON26_Final_Submission_Guide.docx
+CRIMEATHON_2026_Technical_Orientation_Integration final.pptx
+Case_File_CR-26-047_Participant_Final.docx
