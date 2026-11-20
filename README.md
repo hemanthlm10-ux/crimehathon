@@ -34,7 +34,7 @@ python -m trustline.cli evaluate --evidence "../drive-download-20261119T060920Z-
 # Prevention replay: what enforcing the learned contracts would have blocked
 python -m trustline.cli replay   --evidence "../drive-download-20261119T060920Z-1-001" --labels labels/cr26047_labels.csv
 ```
-On Windows you can run everything at once with `trustline/run_demo.ps1`. Open `trustline/out/report.html` in a browser to view the results.
+On Windows you can run everything at once with `trustline/run_demo.ps1`, or show the case investigation and unseen-attack tests side by side with `powershell -ExecutionPolicy Bypass -File trustline/demo_parallel.ps1`. Open `trustline/out/report.html` in a browser to view the results.
 
 See [`trustline/README.md`](trustline/README.md) for how it works, configuration options and the unseen-variation tests.
 
