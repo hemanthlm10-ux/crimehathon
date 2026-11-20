@@ -33,10 +33,10 @@ else {
   $self = $MyInvocation.MyCommand.Path
   $wtArgs = @(
     "-w", "new",
-    "new-tab", "--title", "Case CR-26-047", "-d", "`"$here`"",
+    "new-tab", "--title", "`"Case CR-26-047`"", "-d", "`"$here`"",
     "powershell", "-NoExit", "-ExecutionPolicy", "Bypass", "-File", "`"$self`"", "-Pane", "case",
     ";",
-    "split-pane", "-V", "--title", "Unseen attacks", "-d", "`"$here`"",
+    "split-pane", "-V", "--title", "`"Unseen attacks`"", "-d", "`"$here`"",
     "powershell", "-NoExit", "-ExecutionPolicy", "Bypass", "-File", "`"$self`"", "-Pane", "unseen"
   )
   Start-Process wt -ArgumentList $wtArgs
