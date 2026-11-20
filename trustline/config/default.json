@@ -1,0 +1,53 @@
+{
+  "_comment": "TrustLine configuration. The detection logic names no IP, key or host from the case; behaviour is learned from the logs. The only case-specific entry is approved_changes, an operator input recording a change the vendor announced.",
+  "warmup_days": 21,
+  "helpdesk_tz_offset_minutes": 330,
+  "storage_clock_skew_seconds": 0,
+  "correlation_tolerance_minutes": 15,
+  "alert_threshold": 4,
+  "hour_margin": 1,
+  "min_hour_support": 3,
+  "payment_run_days": [8, 23],
+  "payment_run_lookahead_days": 7,
+  "approval_ref_pattern": "^APR-(\\d+)$",
+  "approval_ref_max_age_steps": 30,
+  "secret_keywords": ["password", "passwd", "api_key", "apikey", "secret", "token", "bearer", "private key",
+                      "ssh", "access key", "credential", "vpn login", "bvk-", "key-", "iban", "swift",
+                      "bank", "payment instruction", "vendor change"],
+  "sensitive_ops": ["export.create", "export.download", "export.delete", "export.list", "read.bank",
+                    "write.bank", "probe", "ticket.search", "list"],
+  "export_chain_window_minutes": 30,
+  "private_ranges": ["10.", "172.16.", "192.168."],
+  "weights": {
+    "NEW_ORIGIN": 3,
+    "NEW_LINK_HOST": 3,
+    "PEER_OFF_WINDOW": 1,
+    "UA_DOWNGRADE": 3,
+    "UA_NEW_FAMILY": 3,
+    "OFF_WINDOW": 1,
+    "NEW_CAPABILITY": 2,
+    "SENSITIVE_CAPABILITY": 2,
+    "SECRET_HUNT": 4,
+    "EXPORT_ERASE_INTEGRATION": 3,
+    "EXPORT_ERASE_HUMAN": 1,
+    "PATH_SCOPE_DRIFT": 3,
+    "DRIFT_REPEAT": 1,
+    "DORMANT_CREDENTIAL": 2,
+    "UNREGISTERED_CREDENTIAL": 2,
+    "BANK_CHANGE_VIA_INTEGRATION": 5,
+    "BANK_CHANGE_NO_APPROVAL": 2,
+    "STALE_APPROVAL_REF": 3,
+    "NEAR_PAYMENT_RUN": 1,
+    "SIGNIN_FAIL_BURST_NEW_IP": 2,
+    "LINKED_TO_FLAGGED_REQUEST": 3
+  },
+  "approved_changes": [
+    {
+      "_why": "Vendor-announced change (E16 item 7, E20-C 3.6.0): contact sync from 1 Sep. Listed so it is not raised as a new capability. Remove to see it flagged.",
+      "actor": "key-tb-07",
+      "op": "write.contact",
+      "from": "2026-09-01",
+      "only_from_known_hosts": true
+    }
+  ]
+}
